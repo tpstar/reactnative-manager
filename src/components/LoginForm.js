@@ -3,8 +3,10 @@ import { View, Text } from 'react-native';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { NavigationActions } from "react-navigation";
 
 class LoginForm extends Component {
+
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -42,6 +44,10 @@ class LoginForm extends Component {
       )
     }
   }
+
+  static navigationOptions = {
+    title: "Please Login"
+  };
 
   render() {
     return (
