@@ -8,3 +8,4 @@ export const NAVIGATE = 'Navigation/NAVIGATE';
 export const GO_BACK = 'Navigation/BACK';
 
 export const EMPLOYEE_UPDATE = 'employee_update';
+export const EMPLOYEE_CREATED_GO_TO_EMPLOYEE_LIST = 'employee_created_go_to_employee_list';

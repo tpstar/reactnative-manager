@@ -1,5 +1,5 @@
 import AppNavigator from "../navigation/navigationStack";
-import { LOGIN_USER_SUCCESS, NAVIGATE, GO_BACK } from '../actions/types';
+import { LOGIN_USER_SUCCESS, NAVIGATE, GO_BACK, EMPLOYEE_CREATED_GO_TO_EMPLOYEE_LIST } from '../actions/types';
 
 const initialState = AppNavigator.router.getStateForAction(
   AppNavigator.router.getActionForPathAndParams("Login")
@@ -21,6 +21,11 @@ const navigationReducer = (state = initialState, action) => {
       const nextStateGoBack = AppNavigator.router.getStateForAction(action, state);
       // console.log(nextStateGoBack)
       return nextStateGoBack || state;
+    case EMPLOYEE_CREATED_GO_TO_EMPLOYEE_LIST:
+      console.log('go to employee list');
+      return AppNavigator.router.getStateForAction(
+          AppNavigator.router.getActionForPathAndParams("EmployeeList")
+        );
     default:
         return state;
     };
