@@ -1,14 +1,27 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
-import { NavigationActions } from 'react-navigation'
+import { connect } from 'react-redux';
+import { FlatList, Button } from 'react-native';
+import { NavigationActions } from 'react-navigation';
+import { employeesFetch } from '../actions';
+import ListItem from './ListItem';
 
 class EmployeeList extends Component {
-  // navigate = () => {
-  //  console.log('I am in navigate')
-  //  const navigateToCreateEmployeePage = NavigationActions.navigate({
-  //    routeName: 'EmployeeCreate'
-  //  })
-  //  this.props.navigation.dispatch(navigateToCreateEmployeePage);
+  componentWillMount() {
+    this.props.employeesFetch();
+    // this.createDataSource(this.props);
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   this.createDataSource(nextProps)
+  // }
+
+  // createDataSource({ employees }) {
+  //   const ds = new ListView.DataSource({
+  //     rowHasChanged: (r1, r2) => r1 !== r2
+  //   });
+  //
+  //   this.dataSource = ds.cloneWithRows(employees);
   // }
 
   static navigationOptions = ({ navigation }) => {
@@ -21,16 +34,25 @@ class EmployeeList extends Component {
     }
   };
   render() {
+    console.log(this.props);
+
     return (
-      <View>
-        <Text>Employee List</Text>
-        <Text>Employee List</Text>
-        <Text>Employee List</Text>
-        <Text>Employee List</Text>
-        <Text>Employee List</Text>
-      </View>
+      <FlatList
+        data={this.props.employees}
+        renderItem={({item}) => <ListItem employee={item} navigation={this.props.navigation}/>}
+        keyExtractor={(item)=>item.id}
+      />
     )
   }
 }
 
-export default EmployeeList;
+const mapStateToProps = state => {
+  const employees = _.map(state.employees, (val, uid) => {
+    return { ...val, uid }; // {shift: 'Monday', name: 'S', id: 'kl;djs;'}
+  })
+  return { employees };
+}
+
+export default connect(mapStateToProps, {
+  employeesFetch
+ })(EmployeeList);

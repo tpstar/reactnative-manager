@@ -1,5 +1,10 @@
 import AppNavigator from "../navigation/navigationStack";
-import { LOGIN_USER_SUCCESS, NAVIGATE, GO_BACK, EMPLOYEE_CREATED } from '../actions/types';
+import {
+  LOGIN_USER_SUCCESS,
+  NAVIGATE,
+  GO_BACK,
+  EMPLOYEE_CREATED
+ } from '../actions/types';
 
 const initialState = AppNavigator.router.getStateForAction(
   AppNavigator.router.getActionForPathAndParams("Login")
