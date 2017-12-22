@@ -3,7 +3,9 @@ import {
   LOGIN_USER_SUCCESS,
   NAVIGATE,
   GO_BACK,
-  EMPLOYEE_CREATED
+  EMPLOYEE_CREATED,
+  EMPLOYEE_EDITED,
+  EMPLOYEE_DELETED
  } from '../actions/types';
 
 const initialState = AppNavigator.router.getStateForAction(
@@ -31,6 +33,14 @@ const navigationReducer = (state = initialState, action) => {
       return AppNavigator.router.getStateForAction(
           AppNavigator.router.getActionForPathAndParams("EmployeeList")
         );
+    case EMPLOYEE_EDITED:
+      return AppNavigator.router.getStateForAction(
+          AppNavigator.router.getActionForPathAndParams("EmployeeList")
+        );
+    case EMPLOYEE_DELETED:
+      return AppNavigator.router.getStateForAction(
+          AppNavigator.router.getActionForPathAndParams("EmployeeList")
+        );    
     default:
         return state;
     };

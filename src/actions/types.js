@@ -10,3 +10,5 @@ export const GO_BACK = 'Navigation/BACK';
 export const EMPLOYEE_UPDATE = 'employee_update';
 export const EMPLOYEE_CREATED = 'employee_created';
 export const EMPLOYEES_FETCH_SUCCESS = 'employee_fetch_success';
+export const EMPLOYEE_EDITED = 'employee_edited';
+export const EMPLOYEE_DELETED = 'employee_edited';

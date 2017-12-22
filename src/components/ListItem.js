@@ -10,8 +10,8 @@ class ListItem extends Component {
     return (
       <TouchableWithoutFeedback
         onPress={() =>
-          navigation.navigate('EmployeeCreate', { employee: this.props.employee })}
-          //In EmployeeCreate, this.props.employee can be called by this.props.navigation.state.params.employee
+          navigation.navigate('EmployeeEdit', { employee: this.props.employee })}
+          //In EmployeeEdit, this.props.employee can be called by this.props.navigation.state.params.employee
       >
         <View>
           <CardSection>
